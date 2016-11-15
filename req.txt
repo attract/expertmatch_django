@@ -82,6 +82,9 @@ django-constance[database]==1.2
 #itunes iap
 itunes-iap==2.3.0
 
+# Gunicorn server
+gunicorn==19.6.0
+
 coverage==4.0
 flake8==2.4.1
 django-test-plus==1.0.9
