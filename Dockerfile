@@ -38,16 +38,16 @@ RUN apt-get install -y \
     postgresql-client
 
 # Install redis
-RUN apt-get install -y \
-    redis-server
+#RUN apt-get install -y \
+#    redis-server
 
-RUN apt-get install -y npm
-
-# Install bower
-RUN apt-get install -y curl
-RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
-RUN apt-get install -y nodejs
-RUN npm install -g bower
+#RUN apt-get install -y npm
+#
+## Install bower
+#RUN apt-get install -y curl
+#RUN curl -sL https://deb.nodesource.com/setup | sudo bash -
+#RUN apt-get install -y nodejs
+#RUN npm install -g bower
 
 # Install ElasticSearch
 #RUN apt-get install -y \
@@ -59,26 +59,28 @@ RUN npm install -g bower
 #RUN service elasticsearch start
 
 # Install supervisor
-RUN apt-get install -y supervisor
+#RUN apt-get install -y supervisor
 
 # update pip
 RUN pip install -U pip setuptools
 
 # Install nginx
-RUN apt-get install -y nginx
+#RUN apt-get install -y nginx
 #RUN mkdir /etc/nginx/sites-enabled/
 #RUN mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.default
 #RUN ln -s /home/docker/code/docker/conf/nginx.conf /etc/nginx/
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf  # set daemon off, because supervisor can't work with nginx in daemon mode
-RUN rm /etc/nginx/sites-enabled/default
+#RUN echo "daemon off;" >> /etc/nginx/nginx.conf  # set daemon off, because supervisor can't work with nginx in daemon mode
+#RUN rm /etc/nginx/sites-enabled/default
 
 # Install uwsgi
-RUN pip install uwsgi
-RUN mkdir /var/log/uwsgi/
+#RUN pip install uwsgi
+#RUN mkdir /var/log/uwsgi/
 
 # Create various dirs
 RUN mkdir /var/log/expertmatch/
 
-EXPOSE 80
+# Install requirements
+COPY ./req.txt /requirements/req.txt
+RUN pip install -r /requirements/req.txt
 
-CMD ["/home/docker/code/docker/start.sh"]
+#CMD ["/home/docker/code/docker/start.sh"]
