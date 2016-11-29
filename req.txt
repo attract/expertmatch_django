@@ -90,4 +90,4 @@ flake8==2.4.1
 django-test-plus==1.0.9
 factory_boy==2.5.2
 
-django-postgrespool=0.3.0
+django-postgrespool==0.3.0
